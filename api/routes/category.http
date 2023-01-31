@@ -1,0 +1,22 @@
+###
+
+POST http://localhost:8000/api/category
+Content-Type: application/json
+
+{
+    "categoryName" : "Test"
+}
+
+###
+
+PUT http://localhost:8000/api/category
+Content-Type: application/json
+
+{
+    "id": ,
+    "categoryName": "Update"
+}
+
+###
+
+GET http://localhost:8000/api/

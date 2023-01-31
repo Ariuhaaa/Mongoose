@@ -1,0 +1,27 @@
+###
+
+POST http://localhost:8000/api/menu
+Content-Type: application/json
+
+{
+    "menuName" : "Home",
+    "Link": "/home"
+}
+
+
+###
+
+GET http://localhost:8000/api/menu
+
+
+###
+
+DELETE http://localhost:8000/api/menu/df5d860f-5bbf-4ec5-8df6-3343c88fe51c
+
+
+
+
+
+
+
+
