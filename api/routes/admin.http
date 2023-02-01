@@ -1,0 +1,40 @@
+###
+
+POST http://localhost:8000/api/admin
+Content-Type: application/json
+
+{
+    "id" : "1",
+    "categoryId":"2",
+    "brandId" : "3",
+    "productName": "Shoes", 
+    "price" : "5600", 
+    "thumbnail" : "", 
+    "images" : "", 
+    "salePrecent" : "5", 
+    "quantity" : "", 
+    "description" : "this is shoes", 
+    "createDate" : "", 
+    "updateData" : "", 
+    "createdUser" : "",
+    "updatedUser" : ""
+}
+
+###
+
+GET http://localhost:8000/api/admin
+
+
+
+
+###
+
+DELETE http://localhost:8000/api/admin
+
+
+
+
+
+
+
+

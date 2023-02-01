@@ -1,7 +1,7 @@
 const fs = require("fs");
 const uuid = require("uuid");
 
-const dataFile = process.cwd() + "/data/menu.json";
+const dataFile = process.cwd() + "/data/admin.json";
 
 exports.getAll = (request, response) => {
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
@@ -16,7 +16,17 @@ exports.getAll = (request, response) => {
 };
 
 exports.create = (request, response) => {
-  const { menuName, link } = request.body;
+  const {
+    productName,
+    categoryId,
+    price,
+    thumbnail,
+    images,
+    salePercent,
+    quantity,
+    brandId,
+    description,
+  } = request.body;
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
     if (readErr) {
       return response.json({ status: false, message: readErr });
@@ -24,7 +34,18 @@ exports.create = (request, response) => {
 
     const parsedData = JSON.parse(data);
 
-    const newObj = { id: uuid.v4(), menuName, link };
+    const newObj = {
+      id: uuid.v4(),
+      productName,
+      categoryId,
+      price,
+      thumbnail,
+      images,
+      salePrecent,
+      quantity,
+      brandId,
+      description,
+    };
 
     parsedData.push(newObj);
 
@@ -66,10 +87,10 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  const { id } = req.params;
+  const { id } = request.params;
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
     if (readErr) {
-      return res.json({ status: false, message: readErr });
+      return response.json({ status: false, message: readErr });
     }
 
     const parsedData = JSON.parse(data);
@@ -78,9 +99,10 @@ exports.delete = (req, res) => {
 
     fs.writeFile(dataFile, JSON.stringify(deletedData), (writeErr) => {
       if (writeErr) {
-        return res.json({ status: false, message: writeErr });
+        return response.json({ status: false, message: writeErr });
       }
-      return res.json({ status: true, result: deletedData });
+
+      return response.json({ status: true, result: deletedData });
     });
   });
 };
