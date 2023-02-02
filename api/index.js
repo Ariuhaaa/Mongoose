@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use("/api", menuRouter);
 // app.use("/api", cateRouter);
-app.use("/api", adminRouter);
+app.use("/api", productRouter);
 
 app.get("/api", (req, res) => {
   res.json({ message: "Welcome Rest API" });

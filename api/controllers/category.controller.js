@@ -1,7 +1,7 @@
 const fs = require("fs");
 const uuid = require("uuid");
 
-const dataFile = process.cwd() + "/data/menu.json";
+const dataFile = process.cwd() + "/data/category.json";
 
 exports.getAll = (request, response) => {
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
@@ -16,7 +16,7 @@ exports.getAll = (request, response) => {
 };
 
 exports.create = (request, response) => {
-  const { menuName, link } = request.body;
+  const { categoryId, categoryNamne } = request.body;
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
     if (readErr) {
       return response.json({ status: false, message: readErr });
@@ -24,7 +24,7 @@ exports.create = (request, response) => {
 
     const parsedData = JSON.parse(data);
 
-    const newObj = { id: uuid.v4(), menuName, link };
+    const newObj = { categoryId, categoryNamne };
 
     parsedData.push(newObj);
 
@@ -38,8 +38,8 @@ exports.create = (request, response) => {
   });
 };
 
-exports.update = (req, res) => {
-  const { id, menuName, link, position } = request.body;
+exports.update = (request, response) => {
+  const { categoryId, categoryNamne } = request.body;
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
     if (readErr) {
       return response.json({ status: false, message: readErr });
@@ -47,11 +47,11 @@ exports.update = (req, res) => {
 
     const parsedData = JSON.parse(data);
 
-    const updateData = parsedData.map((menuObj) => {
-      if (menuObj.id == id) {
-        return { ...menuObj, menuName, link, position };
+    const updateData = parsedData.map((cateObj) => {
+      if (cateObj.id == id) {
+        return { ...cateObj, categoryId, categoryNamne };
       } else {
-        return menuObj;
+        return cateObj;
       }
     });
 
@@ -65,7 +65,7 @@ exports.update = (req, res) => {
   });
 };
 
-exports.delete = (req, res) => {
+exports.delete = (request, response) => {
   const { id } = request.params;
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
     if (readErr) {

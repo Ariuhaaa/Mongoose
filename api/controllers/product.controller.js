@@ -1,7 +1,7 @@
 const fs = require("fs");
 const uuid = require("uuid");
 
-const dataFile = process.cwd() + "/data/admin.json";
+const dataFile = process.cwd() + "/data/product.json";
 
 exports.getAll = (request, response) => {
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
@@ -60,7 +60,18 @@ exports.create = (request, response) => {
 };
 
 exports.update = (req, res) => {
-  const { id, menuName, link, position } = request.body;
+  const {
+    // id: uuid.v4(),
+    productName,
+    categoryId,
+    price,
+    thumbnail,
+    images,
+    salePrecent,
+    quantity,
+    brandId,
+    description,
+  } = request.body;
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
     if (readErr) {
       return response.json({ status: false, message: readErr });
