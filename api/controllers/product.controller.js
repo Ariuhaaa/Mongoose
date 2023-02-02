@@ -106,7 +106,7 @@ exports.delete = (req, res) => {
 
     const parsedData = JSON.parse(data);
 
-    const deletedData = parsedData.filter((e) => e.id != id);
+    const deletedData = parsedData.filter((e) => e.categoryId !== id);
 
     fs.writeFile(dataFile, JSON.stringify(deletedData), (writeErr) => {
       if (writeErr) {
