@@ -1,27 +1,32 @@
 ###
 
-POST http://localhost:8000/api/menu
+POST http://localhost:8080/api/menu
 Content-Type: application/json
 
 {
-    "menuName" : "Home",
-    "Link": "/home"
+    "menuName" : "awsedsfgsadfsadfdasdfsadsdfg",
+    "link": "/home"
 }
 
 
 ###
 
-GET http://localhost:8000/api/menu
+GET http://localhost:8080/api/menu
 
 
 ###
 
-DELETE http://localhost:8000/api/menu/df5d860f-5bbf-4ec5-8df6-3343c88fe51c
+DELETE http://localhost:8080/api/menu
 
 
+###
 
+PUT http://localhost:8080/api/menu
+Content-Type: application/json
 
-
-
+{
+    "menuName": "Test",
+    "link": "/test",
+}
 
 

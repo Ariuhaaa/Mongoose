@@ -15,6 +15,26 @@ exports.getAll = (request, response) => {
   });
 };
 
+// exports.get = (request, response) => {
+//   const { id } = request.params;
+
+//   fs.readFile(dataFile, "utf-8", (readErr, data) => {
+//     if (readErr) {
+//       return response.json({ status: false, message: readErr });
+//     }
+
+//     const myData = JSON.parse(data);
+
+//     const filteredData = myData.filter((el) => {
+//       if (el.categoryId === id) {
+//         return el;
+//       }
+//     });
+
+//     return response.json({ status: true, result: filteredData });
+//   });
+// };
+
 exports.create = (request, response) => {
   const { menuName, link } = request.body;
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
