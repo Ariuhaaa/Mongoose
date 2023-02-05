@@ -1,36 +1,28 @@
 ###
 
-POST http://localhost:8080/api/admin
+POST http://localhost:8080/api/product
 Content-Type: application/json
 
 {
-    "id" : "1",
     "categoryId":"2",
     "brandId" : "3",
     "productName": "Shoes", 
     "price" : "5600", 
-    "thumbnail" : "", 
-    "images" : "", 
     "salePrecent" : "5", 
-    "quantity" : "", 
     "description" : "this is shoes", 
-    "createDate" : "", 
-    "updateData" : "", 
-    "createdUser" : "",
-    "updatedUser" : ""
+
 }
 
 ###
 
-GET http://localhost:8080/api/admin
+GET http://localhost:8080/api/product
 
 
 
 
 ###
 
-DELETE http://localhost:8080/api/admin
-
+DELETE http://localhost:8080/api/product
 
 
 

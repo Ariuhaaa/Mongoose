@@ -15,18 +15,28 @@ exports.getAll = (request, response) => {
   });
 };
 
+// exports.get = (request, response) => {
+//   const { id } = request.params;
+
+//   fs.readFile(dataFile, "utf-8", (readErr, data) => {
+//     if (readErr) {
+//       return response.json({ status: false, message: readErr });
+//     }
+
+//     const myData = JSON.parse(data);
+
+//     const filteredData = myData.filter((el) => {
+//       if (el.categoryId === id) {
+//         return el;
+//       }
+//     });
+
+//     return response.json({ status: true, result: filteredData });
+//   });
+// };
+
 exports.create = (request, response) => {
-  const {
-    productName,
-    categoryId,
-    price,
-    thumbnail,
-    images,
-    salePercent,
-    quantity,
-    brandId,
-    description,
-  } = request.body;
+  const body = request.body;
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
     if (readErr) {
       return response.json({ status: false, message: readErr });
@@ -35,16 +45,11 @@ exports.create = (request, response) => {
     const parsedData = JSON.parse(data);
 
     const newObj = {
-      id: uuid.v4(),
-      productName,
-      categoryId,
-      price,
-      thumbnail,
-      images,
-      salePrecent,
-      quantity,
-      brandId,
-      description,
+      categoryId: uuid.v4(),
+      brandId: uuid.v4(),
+      productName: body.productName,
+      salePercent: body.salePercent,
+      description: body.description,
     };
 
     parsedData.push(newObj);
@@ -60,18 +65,8 @@ exports.create = (request, response) => {
 };
 
 exports.update = (req, res) => {
-  const {
-    // id: uuid.v4(),
-    productName,
-    categoryId,
-    price,
-    thumbnail,
-    images,
-    salePrecent,
-    quantity,
-    brandId,
-    description,
-  } = request.body;
+  const { productName, categoryId, price, salePrecent, brandId, description } =
+    request.body;
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
     if (readErr) {
       return response.json({ status: false, message: readErr });
@@ -79,11 +74,19 @@ exports.update = (req, res) => {
 
     const parsedData = JSON.parse(data);
 
-    const updateData = parsedData.map((menuObj) => {
-      if (menuObj.id == id) {
-        return { ...menuObj, menuName, link, position };
+    const updateData = parsedData.map((proObj) => {
+      if (proObj.id == id) {
+        return {
+          ...proObj,
+          productName,
+          categoryId,
+          price,
+          salePrecent,
+          brandId,
+          description,
+        };
       } else {
-        return menuObj;
+        return proObj;
       }
     });
 
