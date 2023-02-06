@@ -4,13 +4,15 @@ POST http://localhost:8080/api/product
 Content-Type: application/json
 
 {
-    "categoryId":"2",
-    "brandId" : "3",
-    "productName": "Shoes", 
-    "price" : "5600", 
-    "salePrecent" : "5", 
-    "description" : "this is shoes", 
-
+    "productName": "",
+    "id": 0,
+    "categoryId": 0,
+    "price": 0,
+    "thumbImage": "",
+    "images": [],
+    "salePercent": 0,
+    "quantity": 0,
+    "description": ""
 }
 
 ###

@@ -45,11 +45,15 @@ exports.create = (request, response) => {
     const parsedData = JSON.parse(data);
 
     const newObj = {
+      id: uuid.v4(),
       categoryId: uuid.v4(),
-      brandId: uuid.v4(),
       productName: body.productName,
+      price: body.price,
       salePercent: body.salePercent,
+      quantity: body.quantity,
       description: body.description,
+      image: body.image,
+      thumbImage: body.thumbImage,
     };
 
     parsedData.push(newObj);
@@ -65,8 +69,17 @@ exports.create = (request, response) => {
 };
 
 exports.update = (req, res) => {
-  const { productName, categoryId, price, salePrecent, brandId, description } =
-    request.body;
+  const {
+    productName,
+    categoryId,
+    price,
+    salePrecent,
+    quantity,
+    description,
+    image,
+    thumbImage,
+  } = request.body;
+
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
     if (readErr) {
       return response.json({ status: false, message: readErr });
@@ -82,8 +95,10 @@ exports.update = (req, res) => {
           categoryId,
           price,
           salePrecent,
-          brandId,
+          quantity,
           description,
+          image,
+          thumbImage,
         };
       } else {
         return proObj;
