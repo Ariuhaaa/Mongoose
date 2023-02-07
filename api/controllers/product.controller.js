@@ -78,7 +78,7 @@ exports.update = (req, res) => {
     description,
     image,
     thumbImage,
-  } = request.body;
+  } = req.body;
 
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
     if (readErr) {
@@ -115,7 +115,7 @@ exports.update = (req, res) => {
   });
 };
 
-exports.delete = (req, res) => {
+exports.delete = (request, response) => {
   const { id } = request.params;
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
     if (readErr) {
@@ -124,7 +124,7 @@ exports.delete = (req, res) => {
 
     const parsedData = JSON.parse(data);
 
-    const deletedData = parsedData.filter((e) => e.categoryId !== id);
+    const deletedData = parsedData.filter((e) => e.id !== id);
 
     fs.writeFile(dataFile, JSON.stringify(deletedData), (writeErr) => {
       if (writeErr) {
