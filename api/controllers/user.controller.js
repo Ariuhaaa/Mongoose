@@ -1,7 +1,7 @@
 const fs = require("fs");
 const uuid = require("uuid");
 
-const dataFile = process.cwd() + "/data/menu.json";
+const dataFile = process.cwd() + "/data/user.json";
 
 exports.getAll = (request, response) => {
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
@@ -36,7 +36,7 @@ exports.getAll = (request, response) => {
 // };
 
 exports.create = (request, response) => {
-  const { menuName, link } = request.body;
+  const { id, firstname, lastname, username, password, email } = request.body;
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
     if (readErr) {
       return response.json({ status: false, message: readErr });
@@ -44,7 +44,14 @@ exports.create = (request, response) => {
 
     const parsedData = JSON.parse(data);
 
-    const newObj = { id: uuid.v4(), menuName, link };
+    const newObj = {
+      id: uuid.v4(),
+      firstname,
+      lastname,
+      username,
+      password,
+      email,
+    };
 
     parsedData.push(newObj);
 
@@ -59,7 +66,7 @@ exports.create = (request, response) => {
 };
 
 exports.update = (request, response) => {
-  const { id, menuName, link, position } = request.body;
+  const { id, firstname, lastname, username, password, email } = request.body;
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
     if (readErr) {
       return response.json({ status: false, message: readErr });
@@ -67,11 +74,11 @@ exports.update = (request, response) => {
 
     const parsedData = JSON.parse(data);
 
-    const updateData = parsedData.map((menuObj) => {
-      if (menuObj.id == id) {
-        return { ...menuObj, menuName, link, position };
+    const updateData = parsedData.map((userObj) => {
+      if (userObj.id == id) {
+        return { ...userObj, firstname, lastname, username, password, email };
       } else {
-        return menuObj;
+        return userObj;
       }
     });
 
@@ -85,11 +92,11 @@ exports.update = (request, response) => {
   });
 };
 
-exports.delete = (req, res) => {
-  const { id } = req.params;
+exports.delete = (request, response) => {
+  const { id } = request.params;
   fs.readFile(dataFile, "utf-8", (readErr, data) => {
     if (readErr) {
-      return res.json({ status: false, message: readErr });
+      return response.json({ status: false, message: readErr });
     }
 
     const parsedData = JSON.parse(data);
