@@ -1,1 +1,22 @@
-[{"id":"79a5c1a4-d9e4-4c8a-b065-5230b8c4f458","categoryId":"5d037720-1235-45ed-a33f-5340ef5b8122","productName":"shoes","price":"234","salePercent":"4","quantity":"3456","description":"ghfcvhbjkhugjv","thumbImage":"https://res.cloudinary.com/dno2srn4n/image/upload/v1675742614/onlineShop/hfwjgpz4pzmjbmt6jgie.png"},{"id":"9c2cee51-2bab-46b3-a0eb-ded741e612fd","categoryId":"0a5ad9b2-d0e3-48af-a7cd-b4c21980eb49","productName":"dfgbnm","price":"0234","salePercent":"2345","quantity":"234","description":"wefghjbhnvc","thumbImage":"https://res.cloudinary.com/dno2srn4n/image/upload/v1675823554/onlineShop/ky8b6swqwqiceehugla2.png"},{"id":"4fd7db92-5ead-4658-96ec-2b3b84a0c925","categoryId":"37e5ddbb-4d92-4301-893c-e9d9346b8b4b","productName":"sdfbv","price":"0234","salePercent":"234rt","quantity":"345rt2","description":"dsfghbn","thumbImage":"https://res.cloudinary.com/dno2srn4n/image/upload/v1675827847/onlineShop/fkeefidpfgr17ombjihk.jpg"}]
+[
+    {
+        "id": "79a5c1a4-d9e4-4c8a-b065-5230b8c4f458",
+        "categoryId": "5d037720-1235-45ed-a33f-5340ef5b8122",
+        "productName": "shoes",
+        "price": "234",
+        "salePercent": "4",
+        "quantity": "3456",
+        "description": "ghfcvhbjkhugjv",
+        "thumbImage": "https://res.cloudinary.com/dno2srn4n/image/upload/v1675742614/onlineShop/hfwjgpz4pzmjbmt6jgie.png"
+    },
+    {
+        "id": "9c2cee51-2bab-46b3-a0eb-ded741e612fd",
+        "categoryId": "0a5ad9b2-d0e3-48af-a7cd-b4c21980eb49",
+        "productName": "dfgbnm",
+        "price": "0234",
+        "salePercent": "2345",
+        "quantity": "234",
+        "description": "wefghjbhnvc",
+        "thumbImage": "https://res.cloudinary.com/dno2srn4n/image/upload/v1675823554/onlineShop/ky8b6swqwqiceehugla2.png"
+    }
+]
