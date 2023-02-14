@@ -1,9 +1,1 @@
-[
-    {
-        "firstname": "ariu",
-        "lastname": "amar",
-        "username": "ariu",
-        "password": "123",
-        "email": "ariu"
-    }
-]
+[{"firstname":"ariu","lastname":"amar","username":"ariu","password":"123","email":"ariu"},{"id":"2fb86b4f-c890-4f38-b6f0-cb75b64abbc5","firstname":"aruinaa","lastname":"aruinaa","username":"aruinaa","password":"aruinaa","email":"aruinaa"},{"id":"728d8a73-4df7-4138-ac91-d2240b6e8a5d","firstname":"qwe","lastname":"qwe","username":"qwe","password":"qwe","email":"qwe"},{"id":"ef3b55a7-5fcb-41c3-bc87-7864e3b5f51f","firstname":"modal","lastname":"modal","username":"modal","password":"modal","email":"modal"}]

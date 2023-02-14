@@ -1,5 +1,8 @@
 const fs = require("fs");
 const uuid = require("uuid");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+const myPlaintextPassword = "s0//P4$$w0rD";
 
 const dataFile = process.cwd() + "/data/user.json";
 
@@ -37,12 +40,15 @@ exports.getAll = (request, response) => {
 
 exports.create = (request, response) => {
   const { id, firstname, lastname, username, password, email } = request.body;
-  fs.readFile(dataFile, "utf-8", (readErr, data) => {
+
+  // console.log(firstname, lastname, username, password, email);
+  fs.readFile(dataFile, "utf-8", async (readErr, data) => {
     if (readErr) {
       return response.json({ status: false, message: readErr });
     }
 
     const parsedData = JSON.parse(data);
+    const newPassword = await bcrypt.hash(password, saltRounds);
 
     const newObj = {
       id: uuid.v4(),
@@ -110,4 +116,55 @@ exports.delete = (request, response) => {
       return res.json({ status: true, result: deletedData });
     });
   });
+
+  exports.login = (request, response) => {
+    const { email, password } = request.body;
+
+    if (!email || !password)
+      return response.json({
+        status: false,
+        message: "medeellee buren buglunu uu",
+      });
+
+    fs.readFile(dataFile, "utf-8", async (readErr, data) => {
+      if (readErr) {
+        return response.json({ status: false, message: readErr });
+      }
+
+      const parsedData = data ? JSON.parse(data) : [];
+      let user;
+      for (let i = 0; i < parsedData.length; i++) {
+        if (email == parsedData[i].email) {
+          const decrypt = await bcrypt.compare(
+            password + myKey,
+            parsedData[i].password
+          );
+
+          if (decrypt) {
+            user = {
+              id: parsedData[i].id,
+              email: parsedData[i].email,
+              lastname: parsedData[i].lastname,
+              firstname: parsedData[i].firstname,
+            };
+            break;
+          }
+        }
+      }
+
+      console.log(user);
+
+      if (user) {
+        return response.json({
+          status: true,
+          result: user,
+        });
+      } else {
+        return response.json({
+          status: false,
+          message: "Tanii email eswel nuuts ug buruu bna",
+        });
+      }
+    });
+  };
 };
