@@ -40,6 +40,7 @@ exports.getAll = (request, response) => {
 
 exports.create = (request, response) => {
   const { id, firstname, lastname, username, password, email } = request.body;
+  console.log(request.body);
 
   // console.log(firstname, lastname, username, password, email);
   fs.readFile(dataFile, "utf-8", async (readErr, data) => {
