@@ -1,12 +1,9 @@
-const express = require("express");
+const { Router } = require("express");
+const food = require("../controllers/food.controllers");
 
-const router = express.Router();
-const user = require("../controllers/user.controller.js");
+const route = Router();
 
-router.get("/user", user.getAll);
-router.post("/user", user.create);
-router.delete("/user/:id", user.delete);
-router.put("/user", user.update);
-router.post("/user/login", user.login);
+route.get("/", food.getAll);
+route.get("/create", food.create);
 
-module.exports = router;
+module.exports = route;
