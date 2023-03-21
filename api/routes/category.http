@@ -1,0 +1,24 @@
+###
+GET http://localhost:8000/api/category
+
+
+###
+POST http://localhost:8000/api/category
+Content-Type: application/json
+
+{
+  "categoryName": "Salad"
+}
+
+
+###
+PUT http://localhost:8000/api/category/6418e3916b784fa8bfcb61ab
+Content-Type: application/json
+
+{
+  "categoryName": "Salads"
+}
+
+
+###
+DELETE http://localhost:8000/api/category/64192bfca860581011a43252
